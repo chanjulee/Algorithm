@@ -3,11 +3,8 @@ from collections import deque
 
 if __name__ == "__main__":
     N = int(sys.stdin.readline())
-    cards = deque()
-    for c in range(1,N+1):
-        cards.append(c)
+    cards = deque(range(1,N+1))
     while len(cards)>=2:
         cards.popleft()
-        temp = cards.popleft()
-        cards.append(temp)
+        cards.rotate(-1)
     print(cards[0])
