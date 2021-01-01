@@ -5,6 +5,7 @@ if __name__ == "__main__":
     nums = [int(sys.stdin.readline()) for _ in range(N)]
     nums.sort() #오름차순 정렬
     count = Counter(nums).most_common() #개채별로 카운트 및 나열
+    #count = sorted(c.items(),key=lambda x:(-x[]))
     #print(count)
 
     print(int(round(sum(nums)/N,0))) #산술평균
