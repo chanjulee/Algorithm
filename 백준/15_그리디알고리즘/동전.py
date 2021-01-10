@@ -1,4 +1,17 @@
 import sys
+if __name__ == "__main__":
+    N, K = map(int,sys.stdin.readline().split())
+    data = [int(sys.stdin.readline()) for _ in range(N)]
+    data.sort(reverse=True)
+    count = 0
+    for X in data:
+        if X>K: continue
+        count += K//X
+        K %= X
+    print(count)
+
+'''
+import sys
 sys.stdin=open("input.txt","rt")
 N, K = map(int,sys.stdin.readline().split())
 
@@ -17,11 +30,4 @@ for i in coins:
         K -= split*i
         count += split
 print(count)
-
-# for i in coins:
-#     while i<=K and K!=0:
-#         K-=i
-#         result+=1
-#     if K==0:
-#         break
-# print(result)
+'''
