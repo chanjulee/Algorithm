@@ -1,4 +1,29 @@
+def binary_search(array,M,start,end,result):
+    if start>end:
+        return result
+    total = 0
+    mid = (start+end)//2
+    for x in trees:
+        if x>mid:
+            total += x-mid
+        else:
+            break
+    if total<M:
+        binary_search(array,M,start,mid-1,result)
+    else:
+        binary_search(array,M,mid+1,end,mid)
+
 import sys
+if __name__=="__main__":
+    N, M = map(int,sys.stdin.readline().split())
+    trees = list(map(int,sys.stdin.readline().split()))
+    trees.sort(reverse=True) #큰순서대로
+
+    print(binary_search(trees,M,0,trees[0],0))
+
+
+
+'''import sys
 def cutTree(target,data):
     #이진 탐색 위한 시작점과 끝점
     start = 0
@@ -26,5 +51,5 @@ if __name__ == "__main__":
     N, M = map(int,sys.stdin.readline().split())
     trees = list(map(int,sys.stdin.readline().split()))
     trees.sort()
-    print(cutTree(M,trees))
+    print(cutTree(M,trees))'''
     

@@ -1,4 +1,34 @@
 import sys
+if __name__=="__main__":
+    K, N = map(int,sys.stdin.readline().split())
+    lines = [int(sys.stdin.readline()) for _ in range(K)]
+
+    start = 0 #ZeroDivisionError start=1하기...
+    end = max(lines)
+
+    result = 0
+    while start<=end:
+        count = 0
+        mid = (start+end)//2 #1 1 \n 1 했더니 ZeroDivisionError
+        if mid<1: 
+            mid=1        
+        for x in lines:
+            if x>=mid:
+                count += x//mid
+        if count<N: #갯수부족:짧게자르기
+            end = mid-1
+        else: #갯수충분:크게자르기
+            result = mid
+            start = mid+1
+    
+    print(result)
+
+
+
+
+
+
+'''import sys
 def cutLAN(target,data):
     #이진 탐색을 위한 시작점과 끝점
     start = 0
@@ -29,4 +59,4 @@ if __name__ == "__main__":
     N, M = map(int,sys.stdin.readline().split())
     lines = [int(sys.stdin.readline()) for _ in range(N)]
     lines.sort()
-    print(cutLAN(M, lines))
+    print(cutLAN(M, lines))'''
