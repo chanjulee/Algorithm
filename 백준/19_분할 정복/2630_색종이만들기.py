@@ -1,4 +1,46 @@
+# 분할정복(Divide&Conquer): 큰문제를 작은문제로 분할해 재귀적으로 해결
+
+countW = 0 #White '0'
+countB = 0 #Blue '1'
+
+def colorCheck(x, y, n): #정사각형 탐색
+    temp = graph[x][y]
+    for i in range(x, x+n):
+        for j in range(y, y+n):
+            if temp != graph[i][j]:
+                return False
+    return True
+
+def quadTree(x, y, n):
+    global countW, countB
+    if colorCheck(x, y, n): #탐색결과 모두 같음
+        if graph[x][y]==0:
+            countW += 1
+        else:
+            countB += 1
+    else: #탐색결과 다른거 있음 >> 4등분하자
+        temp = n//2
+        quadTree(x, y, temp)
+        quadTree(x, y+temp, temp)
+        quadTree(x+temp, y, temp)
+        quadTree(x+temp, y+temp, temp)
+
 import sys
+if __name__=="__main__":
+    n = int(sys.stdin.readline())
+    graph = [list(map(int,sys.stdin.readline().split())) for _ in range(n)]
+    quadTree(0,0,n)
+    print(countW)
+    print(countB)
+
+
+
+
+
+
+
+
+'''import sys
 sys.stdin = open("c:/Users/Administrator/Documents/Algorithm/백준/19_분할 정복/input.txt","rt")
 N = int(sys.stdin.readline())
 colorPaper = []
@@ -26,4 +68,4 @@ def function(x,y,N):
 white,blue = 0,0
 function(0,0,N)
 print(white)
-print(blue)
+print(blue)'''
