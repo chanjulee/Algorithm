@@ -1,14 +1,17 @@
-N = 25
-K = 5
+import sys
+n, k = map(int,sys.stdin.readline().split())
 count = 0
-while N!=1:
-    if N%K==0 :
-        N = N/K
-        count += 1
+while True:
+    if n%k==0:
+        n //= k
     else:
-        N -= 1
-        count += 1
+        n -= 1
+    count += 1
+    if n==1:
+        break
 print(count)
+
+
 ''' 로그N 코드...
 result = 0
 while True:
